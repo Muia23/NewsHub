@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        {% if title %}
+        <title> {{ title }} </title>
+        {% else %}
+        <title> Home of Truthful and Unbiased News</title>
+        {% endif %}        
+    </head>
+    <body>
+        <h3> CNN Headlines </h3>
+        <ul>
+            {% for cnn_headline in cnn %}
+                <li> {{ cnn_headline.title }} </li>
+            {% endfor %}
+        </ul>        
+    </body>
+</html>
