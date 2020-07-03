@@ -11,9 +11,9 @@ def index():
     '''
     #Getting headline news
     cnn_headlines = get_headlines('cnn')
-    print(cnn_headlines)
+    msnbc_headlines = get_headlines('msnbc')
     title = 'Home of Truthful and Unbiased News'
-    return render_template('index.html', title = title, cnn = cnn_headlines)
+    return render_template('index.html', title = title, cnn = cnn_headlines, msnbc = msnbc_headlines)
 
 @app.route('/news/<news_id>')
 def news(news_id):
