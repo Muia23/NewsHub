@@ -12,7 +12,13 @@
         <h3> CNN Headlines </h3>
         <ul>
             {% for cnn_headline in cnn %}
-                <li> {{ cnn_headline.title }} </li>
+                <li> <img src='{{ cnn_headline.urlToImage }}'> </li>
+            {% endfor %}
+        </ul>        
+        <h3> MSNBC Headlines </h3>
+        <ul>
+            {% for msnbc_headline in cnn %}
+                <li> {{ msnbc_headline.urlToImage }} </li>
             {% endfor %}
         </ul>        
     </body>
