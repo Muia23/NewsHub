@@ -4,7 +4,7 @@ class Headline:
     '''
 
     def __init__(self,id,title,description,urlToImage,publishedAt,author):
-        self.id =id
+        self.id =id    
         self.title = title
         self.description = description
         self.urlToImage = urlToImage
