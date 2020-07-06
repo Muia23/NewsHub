@@ -1,25 +1,46 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        {% if title %}
-        <title> {{ title }} </title>
-        {% else %}
-        <title> Home of Truthful and Unbiased News</title>
-        {% endif %}        
-    </head>
-    <body>
-        <h3> CNN Headlines </h3>
-        <ul>
-            {% for cnn_headline in cnn %}
-                <li> <img src='{{ cnn_headline.urlToImage }}'> </li>
-            {% endfor %}
-        </ul>        
-        <h3> MSNBC Headlines </h3>
-        <ul>
-            {% for msnbc_headline in cnn %}
-                <li> {{ msnbc_headline.urlToImage }} </li>
-            {% endfor %}
-        </ul>        
-    </body>
-</html>
+{% extends 'base.html' %}
+<!-- Content block -->
+{% block content %}
+<nav class="navbar navbar-light bg-light">
+    
+</nav>  
+<div class="container">
+    <p>CNN   MNBC   Aljazeera    BCC </p>
+    <hr>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8" style="padding-top: 10vh;">
+          <div class ="container" style="max-width:770px; max-height: 60vh; overflow-y: scroll;">
+            {% for source_headline in source %}                                       
+            <img src=" {{ source_headline.urlToImage }} " style="width:740px; height: 60vh; padding: 10px;" class="d-block w-100" alt="...">            
+            {% endfor %}                  
+          </div>
+        </div>
+        <div class="col-lg-4">
+            <h3> BBC Headlines </h3>    
+            <div class="container" style="max-width: 500px; max-height: 70vh; overflow-y: scroll;">                                
+                {% for source_headline in source %}
+                <hr> 
+                <div class="row" style="display: inline-block;">
+                   <div class="col-sm-4 col-md-4 col-lg-5">
+                        <img style="width: 190px; height: 100px;" src='{{ source_headline.urlToImage }}'>
+                   </div>
+                   <div class="col-sm-8 col-md-8 col-lg-7" >
+                        <h5> {{ source_headline.title }}</h5>
+                   </div>        
+                </div>    
+                {% endfor %}    
+            </div>
+        </div>
+    </div>
+</div>
+       
+<h3> MSNBC Headlines </h3>
+<ul>
+{% for msnbc_headline in cnn %}
+    <li> {{ msnbc_headline.urlToImage }} </li>
+{% endfor %}
+</ul>        
+     
+{% endblock %}
