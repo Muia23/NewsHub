@@ -40,7 +40,7 @@ def process_results(headline_list):
     '''
     headline_results = []
     for headline_item in headline_list:
-        id = headline_item.get('id')
+        id = headline_item.get('id')        
         title = headline_item.get('title')
         description = headline_item.get('description')
         urlToImage = headline_item.get('urlToImage')
