@@ -5,6 +5,7 @@
 
     </div>
 </nav>
+<div class="jumbotron-fluid"></div>
 <style>
 @media (min-width: 800px) and (max-width: 850px) {
     .navbar:not(.top-nav-collapse) {
@@ -16,8 +17,9 @@
 }
 .navbar{
     background-color:rgba(0,0,0,.2);
-    height: 10vh;
+    height: 5vh;
     padding: 20px;
+    position: absolute;
 }
 .page-footer,.top-nav-collapse{
     background-color:#1C2331
@@ -26,5 +28,12 @@
     .navbar{
         background-color:#1C2331
     }
+}
+.jumbotron-fluid {
+    background:linear-gradient(0deg, rgba(31, 37, 37,0.8), rgba(31, 37, 37,0.8)), url(http://hop.ie/balls/images/world-map-one-color.png);    
+    margin-top: 6vh;
+    height: 30vh;    
+    background-repeat: no-repeat;
+    background-size: cover;
 }    
 </style>
