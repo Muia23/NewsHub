@@ -78,7 +78,7 @@
             </div>
             <br>
             <div class="container" style="background-color:greenyellow; width: 500px;">
-                <h2>Entertainment</h2>
+                <h2>ENTERTAINMENT</h2>
                 <div class="container" style="max-height: 30vh; width: 500px;  overflow-y: scroll;">
                     {% for entertainment_category in entertainment %}
                         <hr>
@@ -90,7 +90,7 @@
         </div>
         <div class="col-md-6" style="padding: 5px;">
             <div class="container" style="background-color: coral; width: 550px;">
-                <h2>Business</h2>
+                <h2>BUSINESS</h2>
                 <div class="container" style="max-height: 40vh; width: 550px;  overflow-y: scroll;">
                     {% for business_category in business %}
                         <hr>
@@ -100,11 +100,18 @@
                 </div>
             </div>
             <br>
-            <div class="container" style="background-color: crimson; height: 40vh; width: 500px;">
-                Tech
+            <div class="container" style="background-color: crimson; width: 500px;">
+                <h2>TECHNOLOGY</h2>
+                <div class="container" style="max-height: 40vh; width: 500px;  overflow-y: scroll;">
+                    {% for technology_category in technology %}
+                        <hr>
+                        <h4> {{technology_category.description }}</h4>
+                        <p><a href="{{technology_category.url}}"> {{technology_category.name }}</a></p>
+                    {% endfor %}                
+                </div>
             </div>
         </div>
-    </div>    
+    </div>        
     <div class="row" style="padding: 7px;">
         <div class="col-md-6">
             <div class="container" style="background-color:darksalmon; height: 20vh; width: 550px;"> 
