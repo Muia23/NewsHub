@@ -11,9 +11,10 @@ def index():
     '''
     #Getting headline news
     source_headlines = get_headlines('us')   
-    sports_category = get_category_news('sports','us') 
+    sports_category = get_category_news('sports','us')
+    entertainment_category = get_category_news('entertainment','us')
     title = 'Home of Truthful and Unbiased News'
-    return render_template('index.html', title = title, source = source_headlines, sports = sports_category)    
+    return render_template('index.html', title = title, source = source_headlines, sports = sports_category, entertainment = entertainment_category)    
     
 @app.route('/news/<int:id>')
 def news(id):
