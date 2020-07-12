@@ -70,8 +70,7 @@
                 <h2>SPORTS</h2>
                 <div class="container" style="max-height: 50vh; width: 570px; overflow-y: scroll;">                    
                     {% for sports_category in sports %}
-                        <hr>
-                        <img src=" {{sports_category.ur}}" class="card-img-top" style ="height: 80px; width: 60px;"alt="...">
+                        <hr>                        
                         <h4> {{sports_category.description }}</h4>
                         <p><a href="{{sports_category.url}}"> {{sports_category.name }}</a></p>
                     {% endfor %}
@@ -87,12 +86,18 @@
                         <p><a href="{{entertainment_category.url}}"> {{entertainment_category.name }}</a></p>
                     {% endfor %}                
                 </div>
-
             </div>
         </div>
         <div class="col-md-6" style="padding: 5px;">
-            <div class="container" style="background-color: coral; height: 40vh; width: 550px;">
-                Business
+            <div class="container" style="background-color: coral; width: 550px;">
+                <h2>Business</h2>
+                <div class="container" style="max-height: 40vh; width: 550px;  overflow-y: scroll;">
+                    {% for business_category in business %}
+                        <hr>
+                        <h4> {{business_category.description }}</h4>
+                        <p><a href="{{business_category.url}}"> {{business_category.name }}</a></p>
+                    {% endfor %}                
+                </div>
             </div>
             <br>
             <div class="container" style="background-color: crimson; height: 40vh; width: 500px;">
