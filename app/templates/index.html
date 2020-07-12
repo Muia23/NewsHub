@@ -1,46 +1,106 @@
 {% extends 'base.html' %}
+<!-- Styles block -->
+
+{% block styles %}
+    {{ super() }}    
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index6.css')}}">
+{% endblock %}
+
 <!-- Content block -->
-{% block content %}
-<nav class="navbar navbar-light bg-light">
-    
-</nav>  
+{% block content %} 
+
 <div class="container">
-    <p>CNN   MNBC   Aljazeera    BCC </p>
-    <hr>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8" style="padding-top: 10vh;">
-          <div class ="container" style="max-width:770px; max-height: 60vh; overflow-y: scroll;">
-            {% for source_headline in source %}                                       
-            <img src=" {{ source_headline.urlToImage }} " style="width:740px; height: 60vh; padding: 10px;" class="d-block w-100" alt="...">            
-            {% endfor %}                  
-          </div>
+    <div class="row" style="text-align: center; height: 30px; padding: 7px;">
+        <div class="col"></div>
+        <div class="col-sm-10 col-md-10">
+            <ul class="stations-list" style="max-height: 30px; overflow-y: hidden;">
+               <li class="station"><button>CNN</button></li> 
+               <li class="station"><button>BBC</button></li> 
+               <li class="station"><button>Fox News</button></li> 
+               <li class="station"><button>MSNBC</button></li> 
+               <li class="station"><button>Al Jazeera</button></li> 
+            </ul>
         </div>
-        <div class="col-lg-4">
-            <h3> BBC Headlines </h3>    
-            <div class="container" style="max-width: 500px; max-height: 70vh; overflow-y: scroll;">                                
-                {% for source_headline in source %}
-                <hr> 
-                <div class="row" style="display: inline-block;">
-                   <div class="col-sm-4 col-md-4 col-lg-5">
-                        <img style="width: 190px; height: 100px;" src='{{ source_headline.urlToImage }}'>
-                   </div>
-                   <div class="col-sm-8 col-md-8 col-lg-7" >
-                        <h5> {{ source_headline.title }}</h5>
-                   </div>        
-                </div>    
-                {% endfor %}    
+        <div class="col">
+            <select searchable="Select Country">                        
+                <option value="1">🇺🇸 US</option>
+                <option value="2">🇨🇦 CA</option>
+                <option value="3">🇨🇳 CN</option>                        
+                <option value="5">🇫🇷 FR</option>
+                <option value="6">🇩🇪 GE</option>                        
+                <option value="8">🇮🇹 IT</option>
+                <option value="9">🇯🇵 JP</option>                        
+                <option value="10">🇷🇺 RU</option>
+                <option value="11">🇬🇧 UK</option> 
+                <h2>Africa:</h2>
+                <option value="12">🇪🇬 EG</option> 
+                <option value="13">🇳🇬 NG</option> 
+            </select>
+        </div>
+    </div>
+    <hr>
+    <div class="row" style="padding: 15px;">        
+        <div class="container-fluid" style="background-color: aqua; ">
+            <h2>Headlines</h2> 
+            <div class="d-flex flex-row flex-nowrap" style="max-height: 50vh; overflow-y: scroll;">               
+            {% for source_headline in source %}           
+                <div class="card card-body">
+                    <img src=" {{ source_headline.urlToImage }}" class="card-img-top" style ="height: 400px; width: 600px;"alt="...">
+                    <div class="headline-body">
+                      <h5 class="headline-title">{{ source_headline.title | truncate(50) }}</h5>                    
+                      <p class="headline-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>                  
+                </div>            
+            {% endfor %}
+            </div>
+        </div>      
+    </div>
+    <style>
+        .card-body {
+            min-height: 300px;
+            min-width: 300px;
+            margin-right: 5px;            
+            display: inline;
+        }
+
+    </style>
+    <div class="row">
+        <div class="col-md-6" style="padding: 5px;"> 
+            <div class="container" style="background-color: blueviolet; max-height: 50vh; width: 570px; overflow-y: scroll;">
+                Sports
+                {% for news_category in category %}
+                    <hr>
+                    <h2> {{news_category.name }}</h2>
+                {% endfor %}
+            </div>
+            <br>
+            <div class="container" style="background-color:greenyellow; height: 30vh; width: 500px;">
+                Entertainment
+            </div>
+        </div>
+        <div class="col-md-6" style="padding: 5px;">
+            <div class="container" style="background-color: coral; height: 40vh; width: 550px;">
+                Business
+            </div>
+            <br>
+            <div class="container" style="background-color: crimson; height: 40vh; width: 500px;">
+                Tech
+            </div>
+        </div>
+    </div>    
+    <div class="row" style="padding: 7px;">
+        <div class="col-md-6">
+            <div class="container" style="background-color:darksalmon; height: 20vh; width: 550px;"> 
+                Health
+            </div>
+        </div>
+    
+        <div class="col-md-6" style="padding-top: 5px;">
+            <div class="container" style="background-color:dimgrey; height: 20vh; width: 600px;">
+                Science
             </div>
         </div>
     </div>
-</div>
-       
-<h3> MSNBC Headlines </h3>
-<ul>
-{% for msnbc_headline in cnn %}
-    <li> {{ msnbc_headline.urlToImage }} </li>
-{% endfor %}
-</ul>        
-     
+</div>      
+<div class="footer" style="height: 10vh; background-color: #1F2525"></div>      
 {% endblock %}
