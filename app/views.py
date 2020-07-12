@@ -1,6 +1,6 @@
 from flask import render_template
 from app import app
-from .request import get_headlines
+from .request import get_headlines, get_headline, get_category_news, get_category_new
 
 
 # views
@@ -10,15 +10,18 @@ def index():
     View root page function that returns the index page and its data
     '''
     #Getting headline news
-    source_headlines = get_headlines('cnn')
-    msnbc_headlines = get_headlines('msnbc')
+    source_headlines = get_headlines('us')   
+    news_category = get_category_news('sports','us') 
     title = 'Home of Truthful and Unbiased News'
-    return render_template('index.html', title = title, source = source_headlines, msnbc = msnbc_headlines)
+    return render_template('index.html', title = title, source = source_headlines, category = news_category)    
+    
+@app.route('/news/<int:id>')
+def news(id):
+    '''
+    view news page function that returns the headline details page and its data
+    '''
+    headline = get_headline(country)
+    title = f'{headline.title}'
 
-@app.route('/news/<news_id>')
-def news(news_id):
-    '''
-    view news page function that returns the news details page and its data
-    '''
-    return render_template('news.html',id = news_id)
+    return render_template('news.html',title = title, headline = headline)
     
