@@ -41,7 +41,7 @@
     <hr>
     <div class="row" style="padding: 15px;">        
         <div class="container-fluid" style="background-color: aqua; ">
-            <h2>Headlines</h2> 
+            <h2>HEADLINES</h2> 
             <div class="d-flex flex-row flex-nowrap" style="max-height: 50vh; overflow-y: scroll;">               
             {% for source_headline in source %}           
                 <div class="card card-body">
@@ -66,12 +66,15 @@
     </style>
     <div class="row">
         <div class="col-md-6" style="padding: 5px;"> 
-            <div class="container" style="background-color: blueviolet; max-height: 50vh; width: 570px; overflow-y: scroll;">
-                Sports
-                {% for news_category in category %}
-                    <hr>
-                    <h2> {{news_category.name }}</h2>
-                {% endfor %}
+            <div class="container" style="background-color: blueviolet; width: 570px; ">
+                <h2>SPORTS</h2>
+                <div class="container" style="max-height: 50vh; width: 570px; overflow-y: scroll;">                    
+                    {% for sports_category in sports %}
+                        <hr>
+                        <h4> {{sports_category.description }}</h4>
+                        <p><a href="{{sports_category.url}}"> {{sports_category.name }}</a></p>
+                    {% endfor %}
+                </div>
             </div>
             <br>
             <div class="container" style="background-color:greenyellow; height: 30vh; width: 500px;">
