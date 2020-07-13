@@ -3,7 +3,8 @@
 
 {% block styles %}
     {{ super() }}    
-    <link rel="stylesheet" href="{{url_for('static',filename='css/index6.css')}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index11.css')}}">
 {% endblock %}
 
 <!-- Content block -->
@@ -14,11 +15,11 @@
         <div class="col"></div>
         <div class="col-sm-10 col-md-10">
             <ul class="stations-list" style="max-height: 30px; overflow-y: hidden;">
-               <li class="station"><button>CNN</button></li> 
-               <li class="station"><button>BBC</button></li> 
-               <li class="station"><button>Fox News</button></li> 
-               <li class="station"><button>MSNBC</button></li> 
-               <li class="station"><button>Al Jazeera</button></li> 
+               <li class="station"><a href="/news/cnn"><button>CNN</button></a></li> 
+               <li class="station"><a href="/news/bbc-news"><button>BBC</button></a></li> 
+               <li class="station"><a href="/news/fox-news"><button>Fox News</button></a></li> 
+               <li class="station"><a href="/news/msnbc"><button>MSNBC</button></a></li> 
+               <li class="station"><a href="/news/al-jazeera-english"><button>Al Jazeera</button></a></li> 
             </ul>
         </div>
         <div class="col">
@@ -31,8 +32,7 @@
                 <option value="8">🇮🇹 IT</option>
                 <option value="9">🇯🇵 JP</option>                        
                 <option value="10">🇷🇺 RU</option>
-                <option value="11">🇬🇧 UK</option> 
-                <h2>Africa:</h2>
+                <option value="11">🇬🇧 UK</option>                 
                 <option value="12">🇪🇬 EG</option> 
                 <option value="13">🇳🇬 NG</option> 
             </select>
@@ -40,7 +40,30 @@
     </div>
     <hr>
     <div class="row" style="padding: 15px;">        
-        <div class="container-fluid" style="background-color: aqua; ">
+        <div class="page-wrapper">
+            <div class="post-slider ">            
+                <h1 class="slider-title">HEADING NEWS</h1>                
+                <div class="post-display container">
+                    {% for source_headline in source %}
+                    <div class="headline">                        
+                        <img src=" {{ source_headline.urlToImage }}" class="card-img-top" style ="height: 100%; width: 100%; opacity: .6;" alt="...">                                                
+                        <h3 style="position: absolute; top: 70%; text-align: right; right: 3px; width: 800px; "><a href="{{source_headline.url}}" style="color: white;"> {{source_headline.title}}</a></h3>
+                    </div>
+                    {% endfor %}
+                </div>
+                <i class="fa fa-chevron-left prev"></i>
+                <i class="fa fa-chevron-right next"></i>
+                <div class="post-wrapper container">
+                    {% for source_headline in source %}
+                    <div class="headline">
+                        <img src=" {{ source_headline.urlToImage }}" class="card-img-top" style ="height: 100%; width: 100%; "alt="...">
+                        <h4 style="position: absolute; text-align: center; top: 40%; width: 250px; background-color: rgba(18, 19, 19, .8);"><a href="{{source_headline.url}}" style="color: white;"> {{source_headline.title |truncate (55)}}</a></h4>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>        
+        <!--<div class="container-fluid" style="background-color: aqua; ">
             <h2>HEADLINES</h2> 
             <div class="d-flex flex-row flex-nowrap" style="max-height: 50vh; overflow-y: scroll;">               
             {% for source_headline in source %}           
@@ -53,7 +76,7 @@
                 </div>            
             {% endfor %}
             </div>
-        </div>      
+        </div>-->      
     </div>
     <style>
         .card-body {
@@ -66,18 +89,20 @@
     </style>
     <div class="row">
         <div class="col-md-6" style="padding: 5px;"> 
-            <div class="container" style="background-color: blueviolet; width: 570px; ">
-                <h2>SPORTS</h2>
-                <div class="container" style="max-height: 50vh; width: 570px; overflow-y: scroll;">                    
+            <div class="container" style="background-color: blueviolet; width: 550px; padding: 10px;">
+                <div class="container" style="background-color: white;padding:none; width: 100%; height: 10vh;" >
+                    <h2>SPORTS</h2>
+                </div>
+                <div class="container" style="max-height: 50vh; width: 550px; overflow-y: scroll;">                    
                     {% for sports_category in sports %}
                         <hr>                        
                         <h4> {{sports_category.description }}</h4>
-                        <p><a href="{{sports_category.url}}"> {{sports_category.name }}</a></p>
+                        <p><a href="{{sports_category.url}}" style="right: 2px;"> {{sports_category.name }}</a></p>
                     {% endfor %}
                 </div>
             </div>
             <br>
-            <div class="container" style="background-color:greenyellow; width: 500px;">
+            <div class="container" style="background-color:greenyellow; width: 500px; padding: 18px;">
                 <h2>ENTERTAINMENT</h2>
                 <div class="container" style="max-height: 30vh; width: 500px;  overflow-y: scroll;">
                     {% for entertainment_category in entertainment %}
@@ -89,7 +114,7 @@
             </div>
         </div>
         <div class="col-md-6" style="padding: 5px;">
-            <div class="container" style="background-color: coral; width: 550px;">
+            <div class="container" style="background-color: coral; width: 550px; padding: 7px;">
                 <h2>BUSINESS</h2>
                 <div class="container" style="max-height: 40vh; width: 550px;  overflow-y: scroll;">
                     {% for business_category in business %}
@@ -100,9 +125,9 @@
                 </div>
             </div>
             <br>
-            <div class="container" style="background-color: crimson; width: 500px;">
+            <div class="container" style="background-color: crimson; width: 550px; padding: 10px;">
                 <h2>TECHNOLOGY</h2>
-                <div class="container" style="max-height: 40vh; width: 500px;  overflow-y: scroll;">
+                <div class="container" style="max-height: 40vh; width: 550px;  overflow-y: scroll;">
                     {% for technology_category in technology %}
                         <hr>
                         <h4> {{technology_category.description }}</h4>
@@ -114,17 +139,39 @@
     </div>        
     <div class="row" style="padding: 7px;">
         <div class="col-md-6">
-            <div class="container" style="background-color:darksalmon; height: 20vh; width: 550px;"> 
-                Health
+            <div class="container" style="background-color:darksalmon; width: 550px; padding: 14px;"> 
+                <h2>HEALTH</h2>
+                <div class="container" style="max-height: 20vh; width: 550px;  overflow-y: scroll;">
+                    {% for health_category in health %}
+                        <hr>
+                        <h4> {{health_category.description }}</h4>
+                        <p><a href="{{health_category.url}}"> {{health_category.name }}</a></p>
+                    {% endfor %}                
+                </div>
             </div>
         </div>
     
         <div class="col-md-6" style="padding-top: 5px;">
-            <div class="container" style="background-color:dimgrey; height: 20vh; width: 600px;">
-                Science
+            <div class="container" style="background-color:dimgrey; width: 500px; padding: 13px;">
+                <h2>SCIENCE</h2>
+                <div class="container" style="max-height: 20vh; width: 500px;  overflow-y: scroll;">
+                    {% for science_category in science %}
+                        <hr>
+                        <h4> {{science_category.description }}</h4>
+                        <p><a href="{{science_category.url}}"> {{science_category.name }}</a></p>
+                    {% endfor %}                
+                </div>
             </div>
         </div>
     </div>
 </div>      
 <div class="footer" style="height: 10vh; background-color: #1F2525"></div>      
+
+{% block scripts %}
+{{ super() }}
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="{{url_for('.static', filename='js/index7.js')}}"></script>
+{% endblock %}
 {% endblock %}
