@@ -1,0 +1,57 @@
+.station {
+    display: inline;
+    padding-right: 20px;
+}
+.card-body {
+    min-height: 300px;
+    min-width: 300px;
+    margin-right: 5px;
+}
+.headline-body {    
+    color: white;
+    width:max-content;
+       
+}
+.post-slider {
+    position: relative;
+    
+}
+.post-slider .next{ 
+    position: absolute;
+    padding-top: 50px;
+    right: 25px;
+    font-size: 2em;
+    color: teal;
+    cursor: pointer;
+}
+.post-slider .prev{
+    position: absolute;
+    padding-top: 50px;
+    left: 25px;
+    font-size: 2em;
+    color: teal;
+    cursor: pointer;
+}
+.post-slider .post-wrapper {
+    width: 850px;
+    height: 170px;
+    padding: 10px;
+    margin: 0 auto;
+    overflow: hidden;
+    margin: 0px auto;    
+}
+
+.post-slider .post-display .headline {
+    height: 500px;
+    width: 325px;
+    display: inline-block;
+    background-color: #121313;
+}
+
+.post-slider .post-wrapper .headline {
+    height: 150px;
+    width: 250px;
+    display: inline-block;
+    margin: 0px 10px;
+    background-color: royalblue;
+}
