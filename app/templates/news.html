@@ -4,7 +4,7 @@
 {% block styles %}
     {{ super() }}    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{url_for('static',filename='css/index13.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
 {% endblock %}
 
 <!-- Content block -->
@@ -28,12 +28,12 @@
     <div class="row" style="padding: 5px;">        
         <div class="page-wrapper">
             <div class="post-slider ">            
-                <h1 class="slider-title" style="text-transform: uppercase;"> {{title}} NEWS</h1>                
+                <h1 class="slider-title" style="text-transform: uppercase;"> {{title}} </h1>                
                 <div class="post-display container">
                     {% for station in station %}
                     <div class="headline">                        
                         <img src=" {{ station.urlToImage }}" class="card-img-top" style ="height: 100%; width: 100%; opacity: .6;" alt="...">                                                
-                        <h1 style="position: absolute; top: 70%; text-align: right; right: 3px; width: 65vw; "><a href="{{station.url}}" style="color: white;"> {{station.title}}</a></h1>
+                        <h1 style="position: absolute; top: 70%; text-align: right; right: 3px; width: 65vw; "><a href="{{station.url}}" style="color: white;"> {{station.title}}</a> <span style="font-size: 20px; color: beige; display: block;">{{station.publishedAt }} <span style="font-size: 30px; color: red;">|</span></span></h1>
                     </div>
                     {% endfor %}
                 </div>
@@ -56,6 +56,6 @@
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<script src="{{url_for('.static', filename='js/index7.js')}}"></script>
+<script src="{{url_for('.static', filename='js/index.js')}}"></script>
 {% endblock %}
 {% endblock %}
